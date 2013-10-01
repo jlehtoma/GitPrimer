@@ -1,0 +1,106 @@
+\def\handout{0}   % set to 1 to produce 4-up handouts instead of slides
+\def\notes{0}     % set to 1 to show \note{}s
+\ifnum\handout=1  % see above for an alternative which uses two preamble files
+\documentclass[handout,13pt,compress,c]{beamer}
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=4mm]
+\setbeamertemplate{footline}[page number]   % omit if don't want slide number at bottom right
+\else
+\documentclass[13pt,compress,c]{beamer}
+\fi
+
+\usetheme{PaloAlto}
+
+\usepackage{graphicx}
+\usepackage{natbib}           % for author year citations \citet \citep
+\usepackage{relsize}          % for \smaller etc.
+\usepackage{verbatim}
+\DeclareGraphicsExtensions{.pdf, .jpg, .png}
+
+\setbeamercolor{normal text}{bg=blue!5}
+\setbeamertemplate{footline}[page number]   % omit if don't want slide number at bottom right
+\ifnum\notes=1 \setbeameroption{show notes} \fi
+
+\newcommand{\ft}[1]{\frametitle{#1}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\figw}[2]{\centerline{\includegraphics[width=#2\textwidth]{#1}}}
+\newcommand{\figh}[2]{\centerline{\includegraphics[height=#2\textheight]{#1}}}
+\newcommand{\fig}[1]{\centerline{\includegraphics{#1}}}
+\newcommand{\foot}[1]{\footnotetext{#1}}  % smaller text in bottom margin, e.g. citations
+\makeatletter
+\renewcommand\@makefntext[1]{\noindent#1} % see p. 114 of LaTeX Companion 2nd edition
+\makeatother
+\renewcommand\footnoterule{}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\newcommand{\denovo}{{\itshape de novo}}
+\newcommand{\Denovo}{{\itshape De novo}}
+\newcommand{\DeNovo}{{\itshape De Novo}}
+\newcommand{\etal}{{\itshape et al.}}
+\newcommand{\clp}{cleft lip/palate}
+\newcommand{\Clp}{Cleft lip/palate}
+\newcommand{\CLP}{Cleft Lip/Palate}
+\newcommand{\logRratio}{log R ratio}
+\newcommand{\LogRratio}{Log R ratio}
+\newcommand{\software}[1]{\textit{#1}}
+\newcommand{\baf}{B allele frequency}
+\newcommand{\bafs}{B allele frequencies}
+\newcommand{\findref}{$\textbf{(find citation)}$}
+\newcommand{\logp}{$-\log_{10}p$}
+\newcommand{\tarp}{\gene{TARP}}
+\newcommand{\gene}[1]{{\itshape #1}}
+\newcommand{\blank}{\textbf{fill in blank}}
+\newcommand{\dd}{\denovo{} deletion}
+\newcommand{\dds}{\denovo{} deletions}
+\newcommand{\Dds}{\Denovo{} deletions}
+\newcommand{\Dd}{\Denovo{} deletion}
+\newcommand{\DD}{\DeNovo{} Deletion}
+\newcommand{\DDs}{\DeNovo{} Deletions}
+\newcommand{\here}{\textbf{stopped here}}
+\newcommand{\rbs}{\textbf{Comments from Rob}}
+\newcommand{\R}{\software{R}}
+\newcommand{\Rpackage}[1]{{\textit{#1}}}
+\newcommand{\md}{\Rpackage{MinimumDistance}}
+\newcommand{\mdshort}{\Rpackage{MD}}
+\newcommand{\chip}{\emph{Illumina 610 quad array}}
+\newcommand{\penncnv}{\software{PennCNV}}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\title[git \& GitHub]{A brief introduction to git \& GitHub}
+\author[Younkin \& Broman]{Samuel G. Younkin, Karl Broman}
+\institute{Department of Biostatistics \& Medical Informatics, University of Wisconsin-Madison}
+\date{Tue 01 Oct 2013 01:52:54 PM CDT}
+\begin{document}
+\frame{\titlepage}
+\frame{
+   \ft{Outline}
+\tableofcontents
+}
+\section{Why use VC?}
+\frame{
+\ft{Why?}
+\bi
+\item history
+\item develop without breaking existing package
+\item collaboration
+\ei
+}
+\section{git \& GitHub}
+\frame{
+\ft{git}
+\bi
+\item created by Linus
+\ei
+}
+\frame{
+\ft{GitHub}
+\bi
+\item Facebook for git repositories
+\ei
+}
+
+\frame{\ft{}
+\begin{center}\Huge{Thank you}\end{center}
+}
+
+\end{document}
