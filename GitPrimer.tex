@@ -3,6 +3,7 @@
 \ifnum\handout=1  % see above for an alternative which uses two preamble files
 \documentclass[handout,13pt,compress,c]{beamer}
 \usepackage{pgfpages}
+%\lstset{language=bash}
 \pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=4mm]
 \setbeamertemplate{footline}[page number]   % omit if don't want slide number at bottom right
 \else
@@ -14,7 +15,20 @@
 \usepackage{graphicx}
 \usepackage{natbib}           % for author year citations \citet \citep
 \usepackage{relsize}          % for \smaller etc.
-\usepackage{verbatim}
+%\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{language=bash,
+%        numbers=left,
+        basicstyle=\tiny,
+%        showstringspaces=false,
+%        aboveskip=-40pt,
+        frame=single,
+        backgroundcolor=\color{lightgray},
+        commentstyle=\color{black},
+        showstringspaces=false
+        }
+
 \DeclareGraphicsExtensions{.pdf, .jpg, .png}
 
 \setbeamercolor{normal text}{bg=blue!5}
@@ -70,35 +84,55 @@
 \author[Younkin \& Broman]{Samuel G. Younkin, Karl Broman}
 \institute{Biostatistics \& Medical Informatics \\ University of Wisconsin-Madison}
 \date{October 2013}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \begin{document}
 \frame{\titlepage}
 \frame{
    \ft{Outline}
 \tableofcontents
 }
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \section{What is git?}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \frame{
 \ft{What is git?}
 \bi
 \item Version Control System (VCS)
-\bi\item In the context of producing elaborate software to be released to the public the need for version control is self-evident
+\bi
+\item In the context of producing elaborate software to be released to
+  the public the need for version control is self-evident
 \item But why should we use it?\ei
 \item Content Tracking System
-\bi\item Useful for reports, manuscripts, web-sites, as well as software\ei
+\bi
+\item Useful for reports, manuscripts, web-sites, as well as
+  software
+\ei
 \ei
 }
-
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \frame{
 \ft{Why is it named git?}
 \bi
 \item Created by Linus Torvalds the creator of the linux kernel
 \item git: British slang for a foolish or worthless person
 \item Linus named the software after himself again
-\item Hilarious yes, but perhaps not the best name for such a ubiquitous and powerful program
-\ei
-}
-
+\item Hilarious yes, but perhaps not the best name for such a
+  ubiquitous and powerful program \ei }
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \section{Why use git?}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \frame{
 \ft{Why?}
 \bi
@@ -107,25 +141,213 @@
 \item collaboration
 \ei
 }
-
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \section{What is GitHub?}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \frame{
-\ft{Why?}
+\ft{GitHub?}
 \bi
-\item history
-\item develop without breaking existing package
-\item collaboration
+\item Foo!
 \ei
 }
-
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \section{Why use GitHub?}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \frame{
-\ft{Why?}
+\ft{Why use GitHub?}
 \bi
-\item history
-\item develop without breaking existing package
-\item collaboration
+\item Foo!
 \ei
 }
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\section{Demo}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Requirements}
+\bi
+\item Sam \& Karl want to collaborate on a presentation, but have ``requirements''
+\bi
+\item Two versions (CK Group \& Faculty)
+\item Track each others contributions
+\item Source should be publicly available
+\item Backups need to be in place
+\item Reproducibility?
+\ei
+\item Surprisingly, git/GitHub, satisfies all of these requirements
+\ei
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Configure}
+\bi
+\item Configure git to know your name and email address
+\ei
+\begin{semiverbatim}
+\begin{lstlisting}
+$ git config --global user.name "Samuel Younkin"
+$ git config --global user.email "syounkin@stat.wisc.edu"
+\end{lstlisting}
+\end{semiverbatim}
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Initialize}
+\bi
+\item Create a working directory and initialize it to be a git
+  repository
+\ei
+\begin{semiverbatim}
+\begin{lstlisting}
+$ mkdir ~/GitPrimer
+$ cd ~/GitPrimer
+$ git init
+Initialized empty Git repository in ~/GitPrimer/.git/
+\end{lstlisting}
+\end{semiverbatim}
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Produce Content}
+\bi
+\item Create a README file
+\ei
+{\tiny
+\begin{semiverbatim}
+Welcome to the GitPrimer repository.
+
+Date: Tue Oct  1 14:12:47 CDT 2013
+
+This repository contains source code for a brief git & GitHub tutorial
+given by Younkin & Broman at the University of Wisconsin-Madison,
+Dept. of Biostatistics & Medical Informatics.
+
+Email Samuel Younkin <syounkin@stat.wisc.edu> with questions or
+comments.
+
+\end{semiverbatim}}
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Incorporate into Repository}
+\bi
+\item Now we have the file README in our working directory, but it is not in the repository yet
+\item We may check the status of the repository and working directory with \texttt{git status}
+\ei
+\begin{semiverbatim}
+\begin{lstlisting}
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#README
+nothing added to commit but untracked files present (use "git add" to track)
+\end{lstlisting}
+\end{semiverbatim}
+
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Incorporate into Repository}
+\bi
+\item Now README is in the index, but not yet in the repository
+\begin{semiverbatim}
+\begin{lstlisting}
+$ git add README
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use ``git rm --cached <file>...'' to unstage)
+#
+#new file:   README
+#
+\end{lstlisting}
+\end{semiverbatim}
+\item It is not in the repository until it is ``committed'' to the repository
+\ei
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Incorporate into Repository}
+\bi
+\item To commit to the repository we us \texttt{git commit}
+\begin{semiverbatim}
+\begin{lstlisting}
+$ git commit -m "Initial commit of README file"
+[master (root-commit) 32c9d01] Initial commit of README file
+ 1 file changed, 14 insertions(+)
+ create mode 100644 README
+\end{lstlisting}
+\end{semiverbatim}
+\item Now it is in the repository and we can see this with \texttt{git log}
+\ei
+\begin{semiverbatim}
+\begin{lstlisting}
+$ git log
+commit 32c9d013132948005408823e79216a891efe357c
+Author: Samuel Younkin <syounkin@stat.wisc.edu>
+Date:   Thu Oct 3 14:05:13 2013 -0500
+
+    Initial commit of README file
+
+\end{lstlisting}
+\end{semiverbatim}
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Incorporate into Repository}
+\bi
+\item Let's look at the commit log for the repository as it was when I wrote this bullet point
+{\footnotesize \begin{semiverbatim}
+\begin{lstlisting}
+$ git log --pretty=format:"%h - %an, %ar : %s" -10
+e946257 - Samuel Younkin, 26 minutes ago : Added *.vrb to .gitignore
+9c2b943 - Samuel Younkin, 22 hours ago : Worked on first four sections
+311a538 - Karl Broman, 2 days ago : chmod on GitPrimer.tex (not executable)
+516108b - Karl Broman, 2 days ago : Add a Makefile
+b7fbf7b - Karl Broman, 2 days ago : Remove the Thank you page
+c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two lines
+173091b - Samuel Younkin, 2 days ago : Fixed time-stamping in README
+92a585c - Samuel Younkin, 2 days ago : Initial commit
+\end{lstlisting}
+\end{semiverbatim}}
+\item We include arguments to \texttt{git log} to make the output more readable.
+\ei
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \end{document}
