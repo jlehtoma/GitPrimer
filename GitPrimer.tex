@@ -211,7 +211,6 @@ nothing added to commit but untracked files present (use "git add" to track)
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
 \bi
-\item Now README is in the working directory, but not yet in the repository
 \item To include README in the repository we must first add README to the index using \texttt{git add}
 \begin{semiverbatim}
 \begin{lstlisting}
@@ -226,8 +225,8 @@ $ git add README
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
 \bi
-\item It is not in the repository until it is ``committed'' to the repository
-\item Currently it is in the index and ``staged'' for a commit
+\item Now, it is in the index, but it is not in the repository until it is ``committed''
+\item Now that it has been added to the index it is ``staged'' for a commit
 \begin{semiverbatim}
 \begin{lstlisting}
 $ git status
@@ -242,6 +241,7 @@ $ git status
 #
 \end{lstlisting}
 \end{semiverbatim}
+\item Note the clear message indicating how one can unstage the file
 \ei
 \end{frame}
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -259,7 +259,19 @@ $ git commit -m "Initial commit of README file"
  create mode 100644 README
 \end{lstlisting}
 \end{semiverbatim}
-\item Now it is in the repository and we can see this with \texttt{git log}
+\item The \texttt{-m} argument allows one to enter a message in the command line
+\item Without \texttt{-m} \texttt{git} will spawn a text editor when you commit
+\item git does not allow one to make a commit without entering a log message
+\ei
+\end{frame}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[fragile]
+\frametitle{Incorporate into Repository}
+\bi
+\item Now that it has been committed it is in the repository 
+\item We inspect the state of the repository again with \texttt{git log}
 \ei
 \begin{semiverbatim}
 \begin{lstlisting}
