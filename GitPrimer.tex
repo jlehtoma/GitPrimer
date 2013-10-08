@@ -66,6 +66,7 @@
 
 \newcommand{\ft}[1]{\frametitle{#1}}
 \newcommand{\bi}{\begin{itemize}}
+\newcommand{\bbi}{\vspace{24pt} \begin{itemize} \itemsep8pt}
 \newcommand{\ei}{\end{itemize}}
 \newcommand{\figw}[2]{\centerline{\includegraphics[width=#2\textwidth]{#1}}}
 \newcommand{\figh}[2]{\centerline{\includegraphics[height=#2\textheight]{#1}}}
@@ -82,7 +83,7 @@
 \section{Version control}
 \frame{
 \ft{Methods for tracking versions}
-\bi
+\bbi
 \item Don't keep track
 \item Save numbered zip files
 \item Formal version control
@@ -91,7 +92,7 @@
 
 \frame{
 \ft{Why use formal version control?}
-\bi
+\bbi
 \item History of changes
 \item Able to go back
 \item No worries about breaking things that work
@@ -111,7 +112,7 @@
 
 \frame{
 \ft{What is git?}
-\bi
+\bbi
 \item Formal version control system
 \item Developed by Linus Torvalds
 \item Content Tracking System
@@ -124,7 +125,7 @@
 
 \frame{
 \ft{Why is it named git?}
-\bi
+\bbi
 \item git: British slang for a foolish or worthless person
 \item Linus named the software after himself again
 \item Hilarious yes, but perhaps not the best name for such a
@@ -132,7 +133,7 @@
 
 \frame{
 \ft{Why use git (vs, say, subversion)?}
-\bi
+\bbi
 \item It's fast
 \item You don't need access to a server
 \item Everyone's using it
@@ -180,7 +181,7 @@
 
 \begin{frame}[fragile]
 \frametitle{Initialize}
-\bi
+\bbi
 \item Create a working directory and initialize it to be a git
   repository
 \ei
@@ -196,11 +197,11 @@ Initialized empty Git repository in ~/GitPrimer/.git/
 
 \begin{frame}[fragile]
 \frametitle{Produce Content}
-\bi
+\bbi
 \item Create a README file
-\ei
-{\tiny
+
 \begin{semiverbatim}
+\begin{lstlisting}
 Welcome to the GitPrimer repository.
 
 Date: Tue Oct  1 14:12:47 CDT 2013
@@ -211,13 +212,14 @@ Dept. of Biostatistics & Medical Informatics.
 
 Email Samuel Younkin <syounkin@stat.wisc.edu> with questions or
 comments.
-
-\end{semiverbatim}}
+\end{lstlisting}
+\end{semiverbatim}
+\ei
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
-\bi
+\bbi
 \item Now we have the file README in our working directory, but it is not in the repository yet
 \item We may check the status of the repository and working directory with \texttt{git status}
 \ei
@@ -240,11 +242,11 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
-\bi
+\bbi
 \item To include README in the repository we must first add README to the index using \texttt{git add}
 \begin{semiverbatim}
 \begin{lstlisting}
-$ git add README
+$ git add README 
 \end{lstlisting}
 \end{semiverbatim}
 \ei
@@ -252,9 +254,11 @@ $ git add README
 
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
+\bbi
+\item Now it is in the index, but it is not in the repository until it is "committed"
 \bi
-\item Now, it is in the index, but it is not in the repository until it is ``committed''
-\item Now that it has been added to the index it is ``staged'' for a commit
+\item[] (it is "staged" for a commit)
+\ei
 \begin{semiverbatim}
 \begin{lstlisting}
 $ git status
@@ -263,19 +267,17 @@ $ git status
 # Initial commit
 #
 # Changes to be committed:
-#   (use ``git rm --cached <file>...'' to unstage)
+#   (use "git rm --cached <file>..." to unstage)
 #
 #new file:   README
-#
 \end{lstlisting}
 \end{semiverbatim}
-\item Note the clear message indicating how one can unstage the file
 \ei
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
-\bi
+\bbi
 \item To commit to the repository we use \texttt{git commit}
 \begin{semiverbatim}
 \begin{lstlisting}
@@ -293,7 +295,7 @@ $ git commit -m "Initial commit of README file"
 
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
-\bi
+\bbi
 \item Now that it has been committed it is in the repository 
 \item We inspect the state of the repository again with \texttt{git log}
 \ei
@@ -312,7 +314,7 @@ Date:   Thu Oct 3 14:05:13 2013 -0500
 
 \begin{frame}[fragile]
 \frametitle{Incorporate into Repository}
-\bi
+\bbi
 \item Let's look at the commit log for the repository as it was when I wrote this bullet point
 {\footnotesize \begin{semiverbatim}
 \begin{lstlisting}
@@ -334,12 +336,12 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 
 \frame{
 \ft{A few points on commits}
-\bi
+\bbi
 \item Use frequent, small commits
 \item Don't get out of sync with your collaborators
 \item Commit the sources, not the derived files
 \bi
-\item (R code not images)
+\item[] (R code not images)
 \ei
 \ei
 }
@@ -349,7 +351,7 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 
 \frame{
 \ft{What is GitHub?}
-\bi
+\bbi
 \item Like facebook for programmers
 \item A home for git repositories
 \item Interface for exploring git repositories
@@ -359,7 +361,7 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 
 \frame{
 \ft{Why use GitHub?}
-\bi
+\bbi
 \item It takes care of the server aspects of git
 \item Facilitates:
 \bi
@@ -375,7 +377,7 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 
 \frame{
 \ft{Getting started with GitHub}
-\bi
+\bbi
 \item Get an account
 \item Set up ssh keys
 \item Create a new repository
@@ -384,7 +386,7 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 
 \frame{
 \ft{Fork, clone, push, \& pull}
-\bi
+\bbi
 \item Fork someone's repository
 \item Clone your version of it
 \item Change things locally
@@ -394,7 +396,7 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 
 \frame{
 \ft{Issues and pull requests}
-\bi
+\bbi
 \item Problem with or suggestion for someone's code?
 \bi
 \item Point it out as an Issue
@@ -414,7 +416,7 @@ c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two line
 \section{Learn More}
 \frame{
 \ft{Resources}
-\bi
+\bbi
 \item Look at others' repositories:
 \bi
 \item Hadley Wickham (ggplot2):
