@@ -1,3 +1,3 @@
 GitPrimer.pdf: GitPrimer.tex
-	pdflatex GitPrimer
-	pdflatex GitPrimer
+	xelatex GitPrimer
+	xelatex GitPrimer

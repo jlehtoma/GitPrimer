@@ -1,43 +1,75 @@
-\def\handout{0}   % set to 1 to produce 4-up handouts instead of slides
-\def\notes{0}     % set to 1 to show \note{}s
-\ifnum\handout=1  % see above for an alternative which uses two preamble files
-\documentclass[handout,13pt,compress,c]{beamer}
-\usepackage{pgfpages}
-\pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=4mm]
-\setbeamertemplate{footline}[page number]   % omit if don't want slide number at bottom right
-\else
-\documentclass[13pt,compress,c]{beamer}
-\fi
-\usetheme{PaloAlto}
+\documentclass[12pt,t]{beamer}
+
 \usepackage{graphicx}
-\usepackage{natbib}          % for author year citations \citet \citep
-\usepackage{relsize}         % for \smaller etc.
-\usepackage{xcolor}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+
+% get rid of junk
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
+
+% font
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue}
+\setbeamerfont{note page}{family*=pplx,size=\footnotesize} % Palatino for notes
+
+% named colors
+\definecolor{offwhite}{RGB}{249,242,215}
+\definecolor{foreground}{RGB}{255,255,255}
+\definecolor{background}{RGB}{24,24,24}
+\definecolor{title}{RGB}{107,174,214}
+\definecolor{gray}{RGB}{155,155,155}
+%\definecolor{darkgray}{RGB}{30,30,30}
+\definecolor{subtitle}{RGB}{102,255,204}
+\definecolor{hilight}{RGB}{102,255,204}
+\definecolor{vhilight}{RGB}{255,111,207}
+\definecolor{lolight}{RGB}{155,155,155}
+\definecolor{green}{RGB}{125,250,125}
+
+% use those colors
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{subtitle}{fg=subtitle}
+\setbeamercolor{institute}{fg=gray}
+\setbeamercolor{normal text}{fg=foreground,bg=background}
+\setbeamercolor{item}{fg=foreground} % color of bullets
+\setbeamercolor{subitem}{fg=gray}
+\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+\setbeamertemplate{itemize subitem}{{\textendash}}
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+% page number
+\setbeamertemplate{footline}{%
+    \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
+          \scriptsize\insertframenumber}}}\hspace*{5pt}}
+
+% add a bit of space at the top of the notes page
+\addtobeamertemplate{note page}{\setlength{\parskip}{12pt}}
+
+% a few macros
+\newcommand{\ig}{\includegraphics}
+\newcommand{\subt}[1]{{\footnotesize \color{subtitle} {#1}}}
+
 \usepackage{listings}
+
 \lstset{language=bash,
         basicstyle=\tiny,
         frame=single,
-        backgroundcolor=\color{lightgray},
-        commentstyle=\color{black},
+        backgroundcolor=\color{darkgray},
+        commentstyle=\color{green},
+        foregroundcolor=\color{white}
         showstringspaces=false
         }
 
-\DeclareGraphicsExtensions{.pdf, .jpg, .png}
-\setbeamercolor{normal text}{bg=blue!5}
-\setbeamertemplate{footline}[page number] % omit if don't want slide number at bottom right
-\ifnum\notes=1 \setbeameroption{show notes} \fi
 \newcommand{\ft}[1]{\frametitle{#1}}
 \newcommand{\bi}{\begin{itemize}}
 \newcommand{\ei}{\end{itemize}}
 \newcommand{\figw}[2]{\centerline{\includegraphics[width=#2\textwidth]{#1}}}
 \newcommand{\figh}[2]{\centerline{\includegraphics[height=#2\textheight]{#1}}}
 \newcommand{\fig}[1]{\centerline{\includegraphics{#1}}}
-\newcommand{\foot}[1]{\footnotetext{#1}} % smaller text in bottom margin, e.g. citations
-\makeatletter
-\renewcommand\@makefntext[1]{\noindent#1} % see p. 114 of LaTeX Companion 2nd edition
-\makeatother
-\renewcommand\footnoterule{}
-\def\newblock{\hskip .11em plus .33em minus .07em}
 
 \title[git \& GitHub]{A brief introduction to git \& GitHub}
 \author[Younkin \& Broman]{Samuel G. Younkin, Karl Broman}
@@ -48,10 +80,7 @@
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \begin{document}
 \frame{\titlepage}
-\frame{
-   \ft{Outline}
-\tableofcontents
-}
+
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
