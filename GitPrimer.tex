@@ -52,7 +52,6 @@
 \addtobeamertemplate{note page}{\setlength{\parskip}{12pt}}
 
 % a few macros
-\newcommand{\ig}{\includegraphics}
 \newcommand{\subt}[1]{{\footnotesize \color{subtitle} {#1}}}
 
 \usepackage{listings}
@@ -86,7 +85,7 @@
 \vspace*{12pt}
 
 % comic from http://www.phdcomics.com/comics/archive.php?comicid=1531
-\centerline{\includegraphics[height=3.2in]{phd101212s.png}}
+\centerline{\includegraphics[height=3.2in]{Images/phd101212s.png}}
 }
 
 \section{Version control}
@@ -124,6 +123,33 @@
 \item Merging changes from multiple people
 \ei
 }
+
+\frame[c]{
+\ft{Example repository}
+
+\figh{Images/example_repo}{0.80}
+
+\onslide<2>{
+\vspace*{-0.65\textheight}
+\figh{Images/example_repo_zoom}{0.55}
+}
+}
+
+
+\frame[c]{
+\ft{Example history}
+
+\figh{Images/example_history}{0.80}
+}
+
+\frame[c]{
+\ft{Example commit}
+
+\figh{Images/example_commit}{0.80}
+}
+
+
+
 
 \section{git}
 
@@ -180,21 +206,6 @@
 \item Not surprisingly, git and GitHub together satisfy all of these requirements
 \ei
 \end{frame}
-
-\begin{frame}
-\frametitle{A github repository}
-
-\vfill
-\includegraphics[height=2.2in]{list_of_commits.png}
-\end{frame}
-
-\begin{frame}
-\frametitle{Details of a commit}
-
-\vfill
-\includegraphics[height=2.2in]{a_commit.png}
-\end{frame}
-
 
 \begin{frame}[fragile]
 \frametitle{Initialize}
