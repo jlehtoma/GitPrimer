@@ -228,25 +228,29 @@
 
 \section{git Demo}
 
-\begin{frame}[fragile]
-\frametitle{Collaboration}
+\begin{frame}
+\frametitle{Basic use}
+
+\bbi
+\item Change some files
+\item See what you've changed
 \bi
-\item Sam \& Karl are collaborating on a presentation
-\item They want:
+\item {\tt git status}
+\item {\tt git diff}
+\ei
+\item Indicate what changes to save
 \bi
-%\item Two versions (CK Group \& Faculty)
-\item Tracking ability
-\bi\item Who made what change and when\ei
-\item Backups need to be in place
-\bi\item If Sam makes a mistake we must be able to undo it
-\item If Karl changes his mind about the direction the project has taken we must be able to revert to any prior state
+\item {\tt git add}
 \ei
-\item Publicly available
-\bi\item So all may benefit from our insight\ei
-\item Annotate changes
-\bi\item If Sam makes a change it should be annotated formally so both Karl and future Sam know why it was made\ei
+\item Commit to those changes
+\bi
+\item {\tt git commit}
 \ei
-\item Not surprisingly, git and GitHub together satisfy all of these requirements
+\onslide<2>{
+\item Send the changes to GitHub
+\bi
+\item {\tt git push}
+\ei }
 \ei
 \end{frame}
 
