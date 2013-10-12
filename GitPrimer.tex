@@ -61,8 +61,9 @@
         frame=single,
         backgroundcolor=\color{darkgray},
         commentstyle=\color{green},
+        showspaces=false,
+        showstringspaces=false,
         foregroundcolor=\color{white}
-        showstringspaces=false
         }
 
 \newcommand{\ft}[1]{\frametitle{#1}}
@@ -235,30 +236,41 @@
 \item Change some files
 \item See what you've changed
 \bi
-\item {\tt git status}
-\item {\tt git diff}
+\item[] {\tt git status}
+\item[] {\tt git diff}
 \ei
 \item Indicate what changes to save
 \bi
-\item {\tt git add}
+\item[] {\tt git add}
 \ei
 \item Commit to those changes
 \bi
-\item {\tt git commit}
+\item[] {\tt git commit}
 \ei
-\onslide<2>{
-\item Send the changes to GitHub
+\onslide<2->{
+\item Push the changes to GitHub
 \bi
-\item {\tt git push}
+\item[] {\tt git push}
+\ei }
+\onslide<3>{
+\item Pull changes from your collaborator
+\bi
+\item[] {\tt git pull friend master}
 \ei }
 \ei
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Initialize}
+\frametitle{Initialize repository}
 \bbi
-\item Create a working directory and initialize it to be a git
-  repository
+\item Create a working directory
+\bi
+\item For example, \verb|~/GitPrimer|
+\ei
+\item Initialize it to be a git repository
+\bi
+\item Creates subdirectory \verb|~/GitPrimer/.git|
+\ei
 \ei
 \begin{semiverbatim}
 \begin{lstlisting}
@@ -271,10 +283,10 @@ Initialized empty Git repository in ~/GitPrimer/.git/
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Produce Content}
+\frametitle{Produce content}
 \bbi
 \item Create a README file
-
+\ei
 \begin{semiverbatim}
 \begin{lstlisting}
 Welcome to the GitPrimer repository.
@@ -289,71 +301,48 @@ Email Samuel Younkin <syounkin@stat.wisc.edu> with questions or
 comments.
 \end{lstlisting}
 \end{semiverbatim}
-\ei
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Incorporate into Repository}
+\frametitle{Produce content}
 \bbi
-\item Now we have the file README in our working directory, but it is not in the repository yet
-\item We may check the status of the repository and working directory with \texttt{git status}
+\item Or create a README.md file
 \ei
 \begin{semiverbatim}
 \begin{lstlisting}
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#README
-nothing added to commit but untracked files present (use "git add" to track)
+Welcome to the GitPrimer repository.
+
+Date: Tue Oct  1 14:12:47 CDT 2013
+
+This repository contains source code for a brief git & GitHub tutorial
+given by [Younkin](http://www.stat.wisc.edu/~syounkin/) &
+[Broman](http://www.biostat.wisc.edu/~kbroman) at the University of
+Wisconsin-Madison, Dept. of Biostatistics & Medical Informatics.
+
+Email Samuel Younkin <syounkin@stat.wisc.edu> with questions or
+comments, or submit an 
+[Issue at the GitHub](https://github.com/syounkin/GitPrimer/issues).
 \end{lstlisting}
 \end{semiverbatim}
-
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Incorporate into Repository}
+\frametitle{Incorporate into repository}
 \bbi
-\item To include README in the repository we must first add README to the index using \texttt{git add}
+\item Stage the changes using {\tt git add}
+\ei
 \begin{semiverbatim}
 \begin{lstlisting}
 $ git add README 
 \end{lstlisting}
 \end{semiverbatim}
-\ei
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Incorporate into Repository}
+\frametitle{Incorporate into repository}
 \bbi
-\item Now it is in the index, but it is not in the repository until it is "committed"
-\bi
-\item[] (it is "staged" for a commit)
+\item Now commit using {\tt git commit}
 \ei
-\begin{semiverbatim}
-\begin{lstlisting}
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached <file>..." to unstage)
-#
-#new file:   README
-\end{lstlisting}
-\end{semiverbatim}
-\ei
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Incorporate into Repository}
-\bbi
-\item To commit to the repository we use \texttt{git commit}
 \begin{semiverbatim}
 \begin{lstlisting}
 $ git commit -m "Initial commit of README file"
@@ -362,52 +351,14 @@ $ git commit -m "Initial commit of README file"
  create mode 100644 README
 \end{lstlisting}
 \end{semiverbatim}
-\item The \texttt{-m} argument allows one to enter a message in the command line
-\item Without \texttt{-m}, \texttt{git} will spawn a text editor when you commit
-\item git does not allow one to make a commit without entering a log message
+
+\bi
+\item The \texttt{-m} argument allows one to enter a message
+\item Without \texttt{-m}, \texttt{git} will spawn a text editor
+\item Use a meaningful message
+\item Message can have multiple lines, but make 1st line an overview
 \ei
 \end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Incorporate into Repository}
-\bbi
-\item Now that it has been committed it is in the repository 
-\item We inspect the state of the repository again with \texttt{git log}
-\ei
-\begin{semiverbatim}
-\begin{lstlisting}
-$ git log
-commit 32c9d013132948005408823e79216a891efe357c
-Author: Samuel Younkin <syounkin@stat.wisc.edu>
-Date:   Thu Oct 3 14:05:13 2013 -0500
-
-    Initial commit of README file
-
-\end{lstlisting}
-\end{semiverbatim}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Incorporate into Repository}
-\bbi
-\item Let's look at the commit log for the repository as it was when I wrote this bullet point
-{\footnotesize \begin{semiverbatim}
-\begin{lstlisting}
-$ git log --pretty=format:"%h - %an, %ar : %s" -10
-e946257 - Samuel Younkin, 26 minutes ago : Added *.vrb to .gitignore
-9c2b943 - Samuel Younkin, 22 hours ago : Worked on first four sections
-311a538 - Karl Broman, 2 days ago : chmod on GitPrimer.tex (not executable)
-516108b - Karl Broman, 2 days ago : Add a Makefile
-b7fbf7b - Karl Broman, 2 days ago : Remove the Thank you page
-c072fbc - Karl Broman, 2 days ago : Simplify institution and split into two lines
-173091b - Samuel Younkin, 2 days ago : Fixed time-stamping in README
-92a585c - Samuel Younkin, 2 days ago : Initial commit
-\end{lstlisting}
-\end{semiverbatim}}
-\item We include arguments to \texttt{git log} to make the output more readable.
-\ei
-\end{frame}
-
 
 \frame{
 \ft{A few points on commits}
