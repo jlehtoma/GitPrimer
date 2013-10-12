@@ -82,13 +82,36 @@
 \begin{document}
 \frame{\titlepage}
 
+\frame{
+\vspace*{12pt}
+
+% comic from http://www.phdcomics.com/comics/archive.php?comicid=1531
+\centerline{\includegraphics[height=3.2in]{phd101212s.png}}
+}
+
 \section{Version control}
 \frame{
-\ft{Methods for tracking versions}
+\ft{\only<1>{Methods for tracking versions}\only<2>{Suppose it stops working\dots}}
 \bbi
 \item Don't keep track
+\onslide<2>{
+\bi
+\item good luck!
+\ei
+}
 \item Save numbered zip files
+\onslide<2>{
+\bi
+\item Unzip versions and {\tt diff}?!
+\ei
+}
 \item Formal version control
+\onslide<2>{
+\bi
+\item Easy to study changes back in time
+\item Easy to jump back and test
+\ei
+}
 \ei
 }
 
@@ -100,14 +123,6 @@
 \item No worries about breaking things that work
 \item Merging changes from multiple people
 \ei
-}
-
-\frame{
-\ft{The traditional method}
-
-\vfill
-% comic from http://www.phdcomics.com/comics/archive.php?comicid=1531
-\centerline{\includegraphics[height=2.8in]{phd101212s.png}}
 }
 
 \section{git}
