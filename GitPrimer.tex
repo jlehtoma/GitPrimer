@@ -105,7 +105,7 @@
 \item Save numbered zip files
 \onslide<2>{
 \bi
-\item Unzip versions and {\tt diff}?!
+\item Unzip versions and {\tt diff}
 \ei
 }
 \item Formal version control
@@ -163,7 +163,7 @@
 \item Formal version control system
 \item Developed by Linus Torvalds (developer of Linux)
 \bi
-\item developed to manage the source code for Linux
+\item used to manage the source code for Linux
 \ei
 \item Tracks any content (but mostly plain text files)
 \bi
@@ -238,6 +238,7 @@
 \bi
 \item[] {\tt git status}
 \item[] {\tt git diff}
+\item[] {\tt git log}
 \ei
 \item Indicate what changes to save
 \bi
@@ -360,7 +361,7 @@ $ git commit -m "Initial commit of README file"
 \ei
 \end{frame}
 
-\frame{
+\begin{frame}[fragile]
 \ft{A few points on commits}
 \bbi
 \item Use frequent, small commits
@@ -369,8 +370,26 @@ $ git commit -m "Initial commit of README file"
 \bi
 \item[] (R code not images)
 \ei
+\item Use {\tt .gitignore} file to indicate files to be ignored
 \ei
-}
+
+
+\begin{semiverbatim}
+\begin{lstlisting}
+*~
+manuscript.pdf
+Figs/*.pdf
+.RData
+.RHistory
+*.Rout
+*.aux
+*.log
+*.out
+\end{lstlisting}
+\end{semiverbatim}
+
+
+\end{frame}
 
 
 \section{GitHub Demo}
