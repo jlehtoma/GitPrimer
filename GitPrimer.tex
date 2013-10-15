@@ -538,16 +538,6 @@ Part of a {\tt .git/config} file:
 
 
 \frame{
-\ft{Fork, clone, push, \& pull}
-\bbi
-\item Fork someone's repository
-\item Clone your version of it
-\item Change things locally
-\item Push your changes
-\ei
-}
-
-\frame{
 \ft{Issues and pull requests}
 \bbi
 \item Problem with or suggestion for someone's code?
@@ -559,11 +549,38 @@ Part of a {\tt .git/config} file:
 \item Fork
 \item Clone
 \item Modify
+\item Commit
 \item Push
 \item Submit a Pull Request
 \ei
 \ei
 }
+
+
+\begin{frame}[fragile]
+\ft{Suggest a change to a repo}
+\bbi
+\item Go to the repository:
+\bi
+\item[] \verb|http://github.com/someone/repo|
+\ei
+\item {\color{hilight} Fork} the repository
+\bi
+\item[] Click the "Fork" button
+\ei
+\item {\color{hilight} Clone} your version of it
+\bi
+\item[] {\tt git clone git@github.com:username/repo}
+\ei
+\item Change things locally, {\tt git \color{hilight} add}, {\tt git \color{hilight} commit}
+\item Push your changes to \emph{your\/} GitHub repository
+\bi
+\item[] {\tt git \color{hilight} push}
+\ei
+\item Go to \emph{your\/} GitHub repository
+\item Click "{\color{hilight} Pull Requests}" and "New pull request"
+\ei
+\end{frame}
 
 
 \section{Learn More}
