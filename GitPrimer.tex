@@ -470,14 +470,72 @@ $ git commit
 
 \section{GitHub Demo}
 
-\frame{
+\begin{frame}[fragile]
 \ft{Getting started with GitHub}
 \bbi
 \item Get an account
 \item Set up ssh keys
-\item Create a new repository
+\bi
+\item Look for files {\color{hilight} \verb|~/.ssh/id_rsa|} and {\color{hilight} \verb|~/.ssh/id_rsa.pub|}
+\item {\color{hilight} \verb|ssh-keygen |}\verb|-t rsa -C "your_email@example.com"|
+\item Copy contents of {\color{hilight} \verb|~/.ssh/id_rsa.pub|}
+\ei
+\item Add SSH key at GitHub
+\bi
+\item Account settings
+\item SSH Keys
+\item Add SSH key
+\ei
+\item Similar thing at BitBuckeet
+\ei
+\end{frame}
+
+\frame{
+\ft{Set up GitHub repository}
+
+\only<1>{
+\bbi
+\item Click the "Create a new repo" button
+\item Give it a {\color{hilight} name} and description
+\item Click the "Create repository" button
+\item Back at the command line:
+  \bi
+  \item {\tt git remote add origin git@github.com:username/repo}
+  \item {\tt git push -u origin master}
+  \ei
 \ei
 }
+\only<2->{\vspace{24pt}}
+\only<2>{\figw{Images/new_repo_1.png}{0.95}}
+\only<3>{\figw{Images/new_repo_2.png}{0.95}}
+
+}
+
+\begin{frame}[fragile]
+\ft{Configuration file}
+
+\vspace{24pt}
+
+Part of a {\tt .git/config} file:
+
+\begin{semiverbatim}
+\begin{lstlisting}
+[remote "origin"]
+	url = git@github.com:kbroman/qtl.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+
+[remote "brian"]
+	url = git://github.com/byandell/qtl.git
+	fetch = +refs/heads/*:refs/remotes/brian/*
+\end{lstlisting}
+\end{semiverbatim}
+
+\end{frame}
+
 
 \frame{
 \ft{Fork, clone, push, \& pull}
