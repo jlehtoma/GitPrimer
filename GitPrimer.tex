@@ -583,6 +583,57 @@ Part of a {\tt .git/config} file:
 \end{frame}
 
 
+\begin{frame}[fragile]
+\ft{Pulling a friend's changes}
+\bbi
+\item Add a connection
+\bi
+\item[] {\tt git remote add friend git://github.com/friend/repo}
+\ei
+\item Pull the changes
+\bi
+\item[] {\tt git pull friend master}
+\ei
+\item Push them back to your GitHub repo
+\bi
+\item[] {\tt git push}
+\ei
+\ei
+\end{frame}
+
+
+\begin{frame}[fragile]
+\ft{Merge conflicts}
+
+\vspace{24pt}
+
+Sometimes after {\color{hilight} \tt git pull friend master}
+
+\begin{semiverbatim}
+\begin{lstlisting}
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+\end{lstlisting}
+\end{semiverbatim}
+
+Inside the file you'll see:
+\begin{semiverbatim}
+\begin{lstlisting}
+<<<<<<< HEAD
+A line in my file.
+=======
+A line in my friend's file
+>>>>>>> 031389f2cd2acde08e32f0beb084b2f7c3257fff
+\end{lstlisting}
+\end{semiverbatim}
+
+Edit, add, commit, push.
+\end{frame}
+
+
+
+
 \section{Learn More}
 \frame{
 \ft{Resources}
