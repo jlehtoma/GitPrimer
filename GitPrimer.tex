@@ -420,6 +420,54 @@ $ git commit
 
 
 
+\frame{
+\ft{Using git on an existing project}
+
+\bbi
+\item {\tt git init}
+\item Set up {\tt .gitignore} file
+\item {\tt git status} {\footnotesize \color{lolight} (did you miss any?)}
+\item {\tt git add .} {\footnotesize \color{lolight} (or name them individually)}
+\item {\tt git status} {\footnotesize \color{lolight} (did you miss any?)}
+\item {\tt git commit}
+\ei
+
+}
+
+
+\begin{frame}
+\frametitle{Basic use}
+
+\bbi
+\item Change some files
+\item See what you've changed
+\bi
+\item[] {\tt git status}
+\item[] {\tt git diff}
+\item[] {\tt git log}
+\ei
+\item Indicate what changes to save
+\bi
+\item[] {\tt git add}
+\ei
+\item Commit to those changes
+\bi
+\item[] {\tt git commit}
+\ei
+\item Push the changes to GitHub
+\bi
+\item[] {\tt git push}
+\ei
+\item Pull changes from your collaborator
+\bi
+\item[] {\tt git pull friend master}
+\ei
+\ei
+\end{frame}
+
+
+
+
 \section{GitHub Demo}
 
 \frame{
