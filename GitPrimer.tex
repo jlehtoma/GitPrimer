@@ -360,6 +360,9 @@ $ git commit -m "Initial commit of README file"
 \ei
 \end{frame}
 
+
+
+
 \begin{frame}[fragile]
 \ft{A few points on commits}
 \bbi
@@ -389,6 +392,32 @@ Figs/*.pdf
 
 
 \end{frame}
+
+
+\begin{frame}[fragile]
+\ft{Removing/moving files}
+
+\vspace{24pt}
+
+For files that are being tracked by git:
+
+\bigskip
+
+Use {\tt \color{hilight} git rm} instead of just {\tt rm}
+
+Use {\tt \color{hilight} git mv} instead of just {\tt mv}
+
+\begin{semiverbatim}
+\begin{lstlisting}
+$ git rm myfile
+$ git mv myfile newname
+$ git mv myfile SubDir/
+$ git commit
+\end{lstlisting}
+\end{semiverbatim}
+
+\end{frame}
+
 
 
 \section{GitHub Demo}
